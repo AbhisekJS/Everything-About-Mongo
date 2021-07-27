@@ -2,7 +2,7 @@ const {MongoClient} = require('mongodb');
 require('dotenv').config()
 
 async function main(){
-    const uri = DB_URL
+    const uri = process.env.DB_URL
     const client = new MongoClient(uri);
     try {
         // Connect to the MongoDB cluster
@@ -10,7 +10,7 @@ async function main(){
         console.log('DB Connected')
         // await listDatabases(client)
         
-        await findListingByName(client,"Ribeira Charming Duplex")
+        // await findListingByName(client,"Ribeira Charming Duplex")
         await findListingsWithMinimumBedroomsBathroomsAndMostRecentReviews(client, {
             minimumNumberOfBedrooms: 4,
             minimumNumberOfBathrooms: 2,
